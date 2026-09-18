@@ -1,4 +1,13 @@
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
+
+// Retrieve the database URL securely from Vercel environment variables
+const getSql = () => {
+  if (!process.env.DATABASE_URL) {
+    console.warn("DATABASE_URL is not set. Please connect Neon in Vercel Storage.");
+    return null;
+  }
+  return neon(process.env.DATABASE_URL);
+};
 
 // Define the shape of our stats return object
 export interface StatsResult {
@@ -18,6 +27,9 @@ let tableCreated = false;
 export async function getDb() {
   if (tableCreated) return;
   
+  const sql = getSql();
+  if (!sql) return;
+
   await sql`
     CREATE TABLE IF NOT EXISTS events (
       id VARCHAR(255) PRIMARY KEY,
@@ -36,6 +48,18 @@ export async function getDb() {
 
 // Get aggregate stats for a specific time window
 export async function getAggregateStats(sinceDays: number): Promise<StatsResult> {
+  const results = {
+    love: 0,
+    friends: 0,
+    affection: 0,
+    marriage: 0,
+    enemies: 0,
+    siblings: 0
+  };
+
+  const sql = getSql();
+  if (!sql) return { calculations: 0, results };
+
   const { rows } = await sql`
     SELECT result, COUNT(*) as count 
     FROM events 
@@ -43,15 +67,6 @@ export async function getAggregateStats(sinceDays: number): Promise<StatsResult>
     AND created_at >= NOW() - INTERVAL '1 day' * ${sinceDays}
     GROUP BY result
   `;
-
-  const results = {
-    love: 0,
-    friends: 0,
-    marriage: 0,
-    siblings: 0,
-    affection: 0,
-    enemies: 0
-  };
 
   let total = 0;
 
@@ -78,6 +93,9 @@ export async function logEvent(
   sessionId: string, 
   ipAddress: string
 ) {
+  const sql = getSql();
+  if (!sql) return;
+
   // Use ON CONFLICT DO NOTHING for idempotency
   await sql`
     INSERT INTO events (id, event_type, result, anonymous_session_id, ip_address)
