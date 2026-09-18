@@ -8,11 +8,10 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "server": "tsx server/index.ts",
-    "start": "tsx server/index.ts",
-    "dev:all": "start npm run server && npm run dev"
+    "vercel-dev": "vercel dev"
   },
   "dependencies": {
+    "@vercel/postgres": "^0.10.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "react": "^19.2.8",

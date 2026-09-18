@@ -5,8 +5,8 @@ import { getDb, logEvent, getAggregateStats } from './db';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Trust proxy if running behind NGINX/Render so we get real IPs for basic rate limiting
-app.set('trust proxy', 1);
+// Remove trust proxy logic because Vercel handles IPs differently
+// app.set('trust proxy', 1);
 
 app.use(cors());
 app.use(express.json());
@@ -15,8 +15,8 @@ app.use(express.json());
 let statsCache: { data: any, timestamp: number } | null = null;
 const CACHE_TTL_MS = 15000; // 15 seconds cache
 
-// Initialize DB on startup
-getDb().then(() => console.log('Database connected')).catch(console.error);
+// Initialize DB on startup (not strictly needed for vercel-postgres as it uses connection pooling automatically, but we can call it to ensure table creation)
+getDb().catch(console.error);
 
 // 1. POST /api/events
 app.post('/api/events', async (req, res) => {
@@ -28,7 +28,7 @@ app.post('/api/events', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const ip = req.ip || req.socket.remoteAddress || 'unknown';
+    const ip = (req.headers['x-forwarded-for'] as string) || req.socket?.remoteAddress || 'unknown';
 
     // Log event idempotently
     await logEvent(id, event_type, result, anonymous_session_id, ip);
@@ -68,6 +68,4 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Analytics server running on http://localhost:${PORT}`);
-});
+export default app;
