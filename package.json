@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "server": "tsx server/index.ts",
+    "start": "tsx server/index.ts",
     "dev:all": "start npm run server && npm run dev"
   },
   "dependencies": {
