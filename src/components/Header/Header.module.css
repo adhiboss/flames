@@ -1,0 +1,131 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: var(--color-bg);
+  border-bottom: 4px solid var(--color-border);
+  position: relative;
+  z-index: 10;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.heartIcon {
+  font-size: 24px;
+  color: var(--color-secondary);
+  animation: beat 2s infinite;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  animation: float 3s ease-in-out infinite;
+}
+
+.title {
+  font-family: var(--font-pixel);
+  font-size: 24px;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.center {
+  flex-grow: 1;
+  max-width: 400px;
+  margin: 0 24px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 16px;
+  border: 3px solid var(--color-border);
+  border-radius: 20px;
+  background-color: var(--color-bg);
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--color-text);
+  outline: none;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.searchInput:focus, .searchInput:hover {
+  background-color: var(--color-white);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--color-tertiary);
+}
+.searchInput::placeholder {
+  color: #888;
+}
+
+.right {
+  display: flex;
+  gap: 12px;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-tertiary);
+  border: 3px solid var(--color-border);
+  border-radius: 8px;
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px rgba(45, 39, 74, 0.2);
+  border-color: var(--color-secondary);
+}
+
+.navButton:active {
+  transform: translateY(1px);
+  box-shadow: 2px 2px 0px rgba(45, 39, 74, 0.2);
+}
+
+.navButton.active {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(1.1); }
+  20% { transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (max-width: 768px) {
+  .center {
+    display: none;
+  }
+  .navButton span {
+    display: none;
+  }
+}

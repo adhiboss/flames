@@ -1,0 +1,124 @@
+.cardsContainer {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.flamesCard {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), filter var(--transition-fast);
+  cursor: default;
+}
+
+.flamesCard:not(.subdued):hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 12px rgba(45, 39, 74, 0.2);
+}
+
+.flamesCardHeader {
+  height: 16px;
+  padding: 0 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  border-bottom: 2px solid var(--color-border);
+  opacity: 0.8;
+}
+
+.flamesCardContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.letter {
+  font-family: var(--font-pixel);
+  font-size: 24px;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+.label {
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Specific Card Colors */
+.card-F { background-color: #FFD1D1; }
+.card-L { background-color: var(--color-purple); }
+.card-A { background-color: var(--color-yellow); }
+.card-M { background-color: var(--color-mint); }
+.card-E { background-color: #FFC099; }
+.card-S { background-color: var(--color-blue); }
+
+.card-F .flamesCardHeader { background-color: #FF9E9E; }
+.card-L .flamesCardHeader { background-color: #B288E5; }
+.card-A .flamesCardHeader { background-color: #FFDE59; }
+.card-M .flamesCardHeader { background-color: #84D6B5; }
+.card-E .flamesCardHeader { background-color: #FF9F66; }
+.card-S .flamesCardHeader { background-color: #92BCFF; }
+
+/* Animation States */
+.animating {
+  transform: scale(1.05) translateY(-5px);
+  border-color: var(--color-tertiary);
+  animation: shake 0.4s infinite;
+  z-index: 5;
+}
+
+@keyframes shake {
+  0%, 100% { transform: scale(1.05) translateY(-5px) rotate(0deg); }
+  25% { transform: scale(1.05) translateY(-5px) rotate(-3deg); }
+  75% { transform: scale(1.05) translateY(-5px) rotate(3deg); }
+}
+
+.eliminated {
+  transform: scale(0.8) translateY(10px);
+  opacity: 0;
+  filter: grayscale(100%);
+  animation: dissolve 0.5s var(--ease-smooth) forwards;
+  pointer-events: none;
+}
+
+@keyframes dissolve {
+  0% { transform: scale(1.05) translateY(-5px); opacity: 1; filter: grayscale(0%); }
+  50% { transform: scale(0.9) translateY(0px); opacity: 0.5; filter: grayscale(50%); }
+  100% { transform: scale(0.8) translateY(10px); opacity: 0; filter: grayscale(100%); }
+}
+
+.highlighted {
+  transform: scale(1.1) translateY(-10px) !important;
+  box-shadow: 0px 10px 20px rgba(255, 114, 182, 0.4) !important;
+  border-color: var(--color-secondary);
+  z-index: 10;
+  animation: float 2s infinite ease-in-out;
+}
+
+.subdued {
+  opacity: 0.4;
+  transform: scale(0.95);
+  filter: grayscale(0.5);
+}
+
+@media (max-width: 768px) {
+  .flamesCard {
+    width: 80px;
+    height: 80px;
+  }
+  .letter {
+    font-size: 20px;
+  }
+  .label {
+    font-size: 12px;
+  }
+}

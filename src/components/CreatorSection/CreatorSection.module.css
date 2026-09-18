@@ -1,0 +1,175 @@
+.creatorSection {
+  width: min(90%, 700px);
+  margin: 120px auto 40px auto; /* Substantial whitespace above, centered horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: transparent;
+  animation: slideUpFade 0.6s var(--ease-smooth);
+}
+
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.title {
+  font-family: var(--font-pixel);
+  font-size: clamp(24px, 4vw, 32px); /* Larger, readable heading */
+  color: var(--color-primary);
+  text-shadow: 2px 2px 0px var(--color-border);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  letter-spacing: 2px;
+}
+
+.heart {
+  color: var(--color-secondary);
+  animation: idleHeart 4s infinite ease-in-out;
+  display: inline-block;
+}
+
+@keyframes idleHeart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.subtitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0 32px 0;
+  width: 100%;
+}
+
+.line {
+  flex-grow: 1;
+  height: 2px;
+  border-bottom: 2px dashed var(--color-border);
+  opacity: 0.3;
+}
+
+.subtitle {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: clamp(14px, 2vw, 16px);
+  color: var(--color-text);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: min(45%, 160px); /* 150-180px each */
+  padding: 12px 0;
+  border: 3px solid var(--color-border);
+  border-radius: 12px;
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text);
+  text-decoration: none;
+  background-color: var(--color-bg);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.socialButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 8px 0px rgba(0,0,0,0.1);
+  background-color: white;
+}
+
+.linkedIn {
+  background-color: #E6F0FE; 
+}
+
+.github {
+  background-color: #F8E8FE; 
+}
+
+.icon {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.imageContainer {
+  width: min(75%, 520px); /* 400-520px wide */
+  height: clamp(180px, 30vw, 260px); /* 180-260px height */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  /* Use multiply to blend the pinks seamlessly */
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+}
+
+.deskImage {
+  width: 100%;
+  height: 100%;
+  /* Using object-fit: cover scales the image up to fill the 520x260 container, zooming in on the desk and removing excess pink */
+  object-fit: cover;
+  /* Shift slightly to center the desk properly if needed, but center is usually default */
+  object-position: center 60%; 
+  transform: scale(1.3); /* Zoom in more to crop out the empty pink background of the image itself */
+}
+
+@media (max-width: 768px) {
+  .creatorSection {
+    margin: 80px auto 40px auto;
+  }
+  
+  .subtitleWrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .line {
+    display: none;
+  }
+  
+  .subtitle {
+    white-space: normal;
+    text-align: center;
+  }
+  
+  .imageContainer {
+    width: 90%;
+    height: 200px;
+    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%);
+  }
+  
+  .deskImage {
+    transform: scale(1.5);
+  }
+}

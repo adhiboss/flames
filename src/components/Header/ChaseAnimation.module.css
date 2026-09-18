@@ -1,0 +1,136 @@
+.chaseContainer {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0 24px;
+}
+
+.fallbackContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--color-text);
+  margin: 0 24px;
+}
+
+.staticHeart {
+  color: var(--color-secondary);
+}
+
+.runnersGroup {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: absolute;
+  left: 0;
+  transform: translateX(-300px); /* Base offscreen left */
+  transition: transform 4.5s linear; /* Smooth running across */
+  will-change: transform;
+}
+
+/* 
+  Container moves from left edge (-300px) to right edge (110vw). 
+*/
+.boyChasing {
+  transform: translateX(110vw); 
+}
+
+.pauseRight {
+  /* Paused offscreen right */
+  transform: translateX(110vw);
+}
+
+.girlChasing {
+  /* Runs back to the left edge */
+  transform: translateX(-300px);
+}
+
+.pauseLeft {
+  /* Paused offscreen left */
+  transform: translateX(-300px);
+}
+
+/* Flip sprites visually when running left to right */
+.facingLeft .spriteMask {
+  transform: scaleX(-1);
+}
+
+.spriteMask {
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  /* Multiply blends white backgrounds into the pink header nicely */
+  mix-blend-mode: multiply;
+}
+
+.boySpriteImg, .girlSpriteImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: runBob 0.3s infinite alternate;
+}
+
+@keyframes runBob {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-6px) rotate(3deg); }
+}
+
+.paused {
+  animation-play-state: paused !important;
+}
+
+.heartTrail {
+  display: flex;
+  gap: 12px;
+  color: var(--color-secondary);
+  transition: opacity 0.2s;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.tinyHeart {
+  font-size: 10px;
+  opacity: 0;
+  animation: floatHeart 1s infinite ease-in-out;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(5px) scale(0.5); opacity: 0; }
+  50% { transform: translateY(-8px) scale(1.2); opacity: 0.8; }
+  100% { transform: translateY(-15px) scale(0.5); opacity: 0; }
+}
+
+@media (max-width: 1024px) {
+  .spriteMask {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .spriteMask {
+    width: 24px;
+    height: 24px;
+  }
+  .chaseContainer {
+    margin: 0 8px;
+  }
+  .runnersGroup {
+    gap: 12px;
+  }
+  .heartTrail {
+    gap: 6px;
+  }
+}
+

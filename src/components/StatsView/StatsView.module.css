@@ -1,0 +1,98 @@
+.statsWindow {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 24px;
+}
+
+.content {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sectionTitle {
+  font-family: var(--font-pixel);
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.statCard {
+  background-color: var(--color-bg);
+  border: 3px solid var(--color-border);
+  border-radius: 8px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+}
+
+.statIcon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.statNumber {
+  font-family: var(--font-pixel);
+  font-size: 24px;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* Popular list styling matching right sidebar but larger */
+.popularList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.popularItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rank {
+  width: 24px;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+}
+
+.itemLabel {
+  width: 100px;
+}
+
+.barContainer {
+  flex-grow: 1;
+  height: 12px;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  transition: width 1s ease-out;
+}
+
+.percent {
+  width: 48px;
+  text-align: right;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+}

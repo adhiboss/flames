@@ -1,0 +1,21 @@
+{
+  "name": "FLAMES",
+  "short_name": "FLAMES",
+  "description": "Play the classic FLAMES name game online. Enter two names and let fate decide.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff3366",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

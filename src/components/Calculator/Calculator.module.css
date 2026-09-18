@@ -1,0 +1,268 @@
+.calculatorWindow {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 24px;
+  box-shadow: 12px 12px 0px rgba(45, 39, 74, 0.15);
+  animation: windowOpen 0.6s var(--ease-smooth);
+}
+
+@keyframes windowOpen {
+  0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.headerTitle {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.calcContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.classicGame {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.flamesHero {
+  font-family: var(--font-pixel);
+  font-size: 80px;
+  color: var(--color-primary);
+  text-shadow: 
+    4px 4px 0px var(--color-border),
+    -2px -2px 0px var(--color-secondary),
+    2px -2px 0px var(--color-secondary),
+    -2px 2px 0px var(--color-secondary),
+    2px 2px 0px var(--color-secondary);
+  margin: 0;
+  line-height: 1;
+  position: relative;
+  display: inline-flex;
+  padding: 0 40px;
+}
+
+.flamesHero span.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  animation: titleLetterIn 0.5s var(--ease-smooth) forwards;
+}
+
+.flamesHero span.letter:nth-child(2) { animation-delay: 250ms; }
+.flamesHero span.letter:nth-child(3) { animation-delay: 330ms; }
+.flamesHero span.letter:nth-child(4) { animation-delay: 410ms; }
+.flamesHero span.letter:nth-child(5) { animation-delay: 490ms; }
+.flamesHero span.letter:nth-child(6) { animation-delay: 570ms; }
+.flamesHero span.letter:nth-child(7) { animation-delay: 650ms; }
+
+@keyframes titleLetterIn {
+  0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+  70% { transform: translateY(-4px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.titleWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.titleWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-15deg);
+  animation: shimmer 4s infinite 2s;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { left: -50%; opacity: 0; }
+  10% { opacity: 1; }
+  20% { left: 150%; opacity: 0; }
+  100% { left: 150%; opacity: 0; }
+}
+
+.heartLeft, .heartRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  color: var(--color-secondary);
+  text-shadow: none;
+  animation: idleHeart 4s infinite ease-in-out;
+}
+.heartLeft { left: -10px; animation-delay: 1s; }
+.heartRight { right: -10px; animation-delay: 2s; }
+
+@keyframes idleHeart {
+  0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-60%) scale(1.1); opacity: 1; }
+}
+
+
+
+.heroSubtitle {
+  font-family: var(--font-cursive);
+  font-size: 14px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 16px 0 40px 0;
+}
+
+.inputsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+.inputBox {
+  flex: 1;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  background-color: var(--color-bg);
+}
+
+.inputBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 114, 182, 0.2);
+  border-color: var(--color-secondary);
+}
+
+.inputBox:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px var(--color-tertiary);
+  border-color: var(--color-secondary);
+  background-color: #fff9fc;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+.inputIconImage {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.inputIconImage:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.swapContainer {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+  padding: 0 8px;
+}
+
+.swapButton {
+  background: none;
+  border: none;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--color-secondary);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  padding: 4px 8px;
+}
+
+.swapButton:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.inputFieldWrapper {
+  position: relative;
+}
+.inputFieldWrapper input {
+  width: 100%;
+  padding-left: 36px;
+}
+
+.connection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-secondary);
+}
+
+.connectionHeart {
+  font-size: 24px;
+  animation: pulseHeart 3s infinite ease-in-out;
+  transition: transform var(--transition-medium);
+}
+
+.connectionHeart.filled {
+  animation: none;
+  transform: scale(1.15);
+  color: var(--color-primary);
+  text-shadow: 0 0 10px rgba(245, 166, 214, 0.5);
+}
+
+@keyframes pulseHeart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.dotLine {
+  width: 30px;
+  height: 2px;
+  border-bottom: 3px dotted var(--color-secondary);
+}
+
+.calcButton {
+  font-size: 20px;
+  padding: 16px 48px;
+  border-radius: 24px;
+  background-color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .inputsContainer {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .dotLine {
+    width: 2px;
+    height: 20px;
+    border-bottom: none;
+    border-right: 3px dotted var(--color-secondary);
+  }
+  .connection {
+    flex-direction: column;
+  }
+  .flamesHero {
+    font-size: 48px;
+  }
+}
