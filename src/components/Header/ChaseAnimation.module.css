@@ -29,15 +29,17 @@
   align-items: center;
   gap: 24px;
   position: absolute;
-  left: 0;
-  animation: runAcross 10s linear infinite;
-  will-change: transform;
+  top: 50%;
+  margin-top: -24px; /* Vertically center based on 48px sprite */
+  left: -200px;
+  animation: runAcross 12s linear infinite;
+  will-change: left;
 }
 
 @keyframes runAcross {
-  0%, 5% { transform: translateX(-300px); }
-  50%, 55% { transform: translateX(110vw); }
-  100% { transform: translateX(-300px); }
+  0%, 10% { left: -200px; }
+  45%, 55% { left: 100%; }
+  90%, 100% { left: -200px; }
 }
 
 .spriteMask {
