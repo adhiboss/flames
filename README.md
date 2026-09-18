@@ -1,32 +1,60 @@
-# React + TypeScript + Vite
+# ♥ FLAMES.EXE
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+### The classic FLAMES game, rebuilt for the internet.
 
-Currently, two official plugins are available:
+Remember writing two names on a piece of paper, crossing out matching letters, and letting **FLAMES** decide your fate?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+We brought it back.
 
-## React Compiler
+**FLAMES.EXE** is a nostalgic, pixel-inspired web experience built around the childhood game we all somehow took very seriously.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> Same names. Different stories. ♥
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## ✨ What is FLAMES?
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+**FLAMES** is the classic name-matching game where two names are compared and the remaining letters are used to determine a relationship:
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+**F** — Friends  
+**L** — Love  
+**A** — Affection  
+**M** — Marriage  
+**E** — Enemies  
+**S** — Siblings  
+
+Enter two names, press the button, and let fate decide.
+
+---
+
+## 🎮 Features
+
+- ♥ Classic FLAMES calculation
+- ✨ Animated elimination experience
+- 🖥️ Retro 2000s / pixel-inspired interface
+- 📖 Local calculation history
+- 📊 Live public FLAMES statistics
+- 💫 Dynamic "Today's Vibe"
+- 💡 Random FLAMES facts
+- 🔥 Popular results this week
+- 📱 Fully responsive design
+- 🔗 Share your result
+- 🚫 No login or signup required
+- 🔒 Names stay local to your browser
+
+---
+
+## 🕹️ The Experience
+
+```text
+ENTER TWO NAMES
+       ↓
+ MATCH THE LETTERS
+       ↓
+ REMOVE THE COMMON ONES
+       ↓
+    COUNT THEM
+       ↓
+ LET FLAMES DECIDE
+       ↓
+   ♥ YOUR RESULT ♥
