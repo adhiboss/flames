@@ -1,0 +1,312 @@
+.decorationsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through */
+  z-index: 1; /* Below the desk setup but above background */
+  overflow: visible;
+}
+
+.leftSide, .rightSide {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: auto; /* Re-enable for the items if needed, but not strictly necessary */
+}
+
+.leftSide {
+  left: -240px; /* Push outside the CreatorSection bounds */
+  width: 200px;
+  align-items: flex-end; /* Align towards the center */
+}
+
+.rightSide {
+  right: -260px;
+  width: 220px;
+  align-items: flex-start;
+}
+
+/* ================== LEFT SIDE ELEMENTS ================== */
+
+/* Sticky Note */
+.stickyNote {
+  background-color: var(--color-yellow);
+  padding: 16px 20px;
+  font-family: var(--font-cursive);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text);
+  box-shadow: 4px 6px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: center;
+  width: 140px;
+  border: 2px solid var(--color-border);
+}
+
+.noteTop {
+  background-color: var(--color-tertiary);
+  transform: rotate(-8deg);
+  margin-top: 20px;
+}
+
+.noteBottom {
+  background-color: var(--color-tertiary);
+  transform: rotate(5deg);
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.tape {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(3deg);
+  width: 30px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Book Stack */
+.bookStack {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.book {
+  width: 160px;
+  padding: 6px 12px;
+  border: 3px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-text);
+  box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: -4px; /* overlap slightly */
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bookStack > div:nth-child(1) { z-index: 5; }
+.bookStack > div:nth-child(2) { z-index: 4; }
+.bookStack > div:nth-child(3) { z-index: 3; }
+.bookStack > div:nth-child(4) { z-index: 2; }
+.bookStack > div:nth-child(5) { z-index: 1; }
+
+/* ================== RIGHT SIDE ELEMENTS ================== */
+
+/* Retro Window */
+.retroWindow {
+  background-color: var(--color-tertiary);
+  border: 3px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 6px 6px 0px rgba(45, 39, 74, 0.15);
+  width: 200px;
+  margin-top: 20px;
+  transform: rotate(3deg);
+  overflow: hidden;
+}
+
+.windowHeader {
+  background-color: var(--color-purple);
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--color-border);
+  font-family: var(--font-text);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.windowControls {
+  display: flex;
+  gap: 4px;
+}
+
+.windowControls span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-border);
+  background-color: white;
+  border-radius: 2px;
+}
+
+.windowContent {
+  padding: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-text);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.fileIcon {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--color-border);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.windowFooter {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 2px dashed var(--color-bg);
+  font-size: 9px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* MP3 Player */
+.mp3Player {
+  width: 120px;
+  height: 180px;
+  background-color: var(--color-primary);
+  border: 3px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 4px 4px 0px rgba(45, 39, 74, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transform: rotate(-10deg) translateX(30px);
+  margin: 20px 0;
+  position: relative;
+}
+
+.screen {
+  background-color: white;
+  width: 100%;
+  height: 60px;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  padding: 6px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.screenArrow {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  font-size: 10px;
+}
+
+.clickWheel {
+  width: 70px;
+  height: 70px;
+  background-color: var(--color-tertiary);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wheelCenter {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+}
+
+.wheelBtn {
+  position: absolute;
+  font-family: var(--font-text);
+  font-size: 7px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.headphones {
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  width: 60px;
+  height: 80px;
+  border: 3px solid var(--color-border);
+  border-top: none;
+  border-left: none;
+  border-radius: 0 0 40px 20px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Notebook */
+.notebook {
+  width: 160px;
+  height: 110px;
+  background-color: var(--color-tertiary);
+  border: 3px solid var(--color-border);
+  border-radius: 0 8px 8px 0;
+  box-shadow: 4px 6px 0px rgba(0, 0, 0, 0.1);
+  transform: rotate(6deg);
+  position: relative;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.spiral {
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  bottom: 5px;
+  width: 12px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 8px,
+    var(--color-border) 8px,
+    var(--color-border) 12px
+  );
+  border-radius: 6px;
+}
+
+.notebookText {
+  padding: 24px 16px;
+  font-family: var(--font-cursive);
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Responsiveness */
+@media (max-width: 1300px) {
+  .leftSide { left: -160px; }
+  .rightSide { right: -180px; }
+  .mp3Player { transform: scale(0.8) rotate(-10deg) translateX(0); }
+  .bookStack { transform: scale(0.9); }
+}
+
+@media (max-width: 1100px) {
+  .decorationsContainer {
+    display: none; /* Hide when there is not enough space on the sides */
+  }
+}

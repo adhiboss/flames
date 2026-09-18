@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './CreatorSection.module.css';
 import deskSetup from '../../assets/creator_desk_setup.jpg';
+import { DeskDecorations } from '../DeskDecorations/DeskDecorations';
 
 export const CreatorSection: React.FC = () => {
   return (
     <div className={styles.creatorSection}>
-      
+      <DeskDecorations />
       <div className={styles.textContainer}>
         <h2 className={styles.title}>
           <span className={styles.heart}>♥</span> BUILT BY AG <span className={styles.heart}>♥</span>
