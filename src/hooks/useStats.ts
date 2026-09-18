@@ -15,7 +15,8 @@ export function useStats() {
 
     const fetchStats = async () => {
       try {
-        const res = await fetch('/api/stats');
+        const apiUrl = import.meta.env.VITE_API_URL || '';
+        const res = await fetch(`${apiUrl}/api/stats`);
         if (!res.ok) throw new Error('API error');
         const data = await res.json();
         if (mounted) {

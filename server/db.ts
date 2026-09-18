@@ -20,8 +20,10 @@ let dbInstance: Database | null = null;
 export async function getDb() {
   if (dbInstance) return dbInstance;
   
+  const dbPath = process.env.DB_PATH || path.join(__dirname, 'flames_analytics.sqlite');
+  
   const db = await open({
-    filename: path.join(__dirname, 'flames_analytics.sqlite'),
+    filename: dbPath,
     driver: sqlite3.Database
   });
 

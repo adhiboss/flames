@@ -10,7 +10,8 @@ export function getSessionId(): string {
 export async function logCalculation(result: string) {
   try {
     const eventId = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 15);
-    await fetch('/api/events', {
+    const apiUrl = import.meta.env.VITE_API_URL || '';
+    await fetch(`${apiUrl}/api/events`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
