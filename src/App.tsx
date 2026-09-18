@@ -13,6 +13,7 @@ import type { FlamesCalculation, FlamesResultType } from './utils/flamesLogic';
 import { logCalculation } from './utils/analytics';
 import { useHistory } from './hooks/useHistory';
 import type { ViewType } from './components/SidebarLeft/SidebarLeft';
+import { Analytics } from '@vercel/analytics/react';
 import './index.css';
 
 // Loading text sequence
@@ -187,6 +188,7 @@ export const App: React.FC = () => {
     >
       {renderContent()}
       <DevTestPanel />
+      <Analytics />
     </Layout>
   );
 };
