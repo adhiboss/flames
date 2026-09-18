@@ -22,20 +22,28 @@ export const ResultCard: React.FC<ResultCardProps> = ({ name1, name2, calculatio
     }
   };
 
-  const handleShare = async () => {
+  const shareText = `${name1.toUpperCase()} + ${name2.toUpperCase()} = ${calculation.fullMeaning.toUpperCase()} ♥\nCalculate your FLAMES!`;
+  const shareUrl = window.location.href;
+
+  const handleWhatsApp = () => {
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`, '_blank');
+  };
+
+  const handleInstagram = async () => {
+    // Instagram doesn't have a direct web share API, so we try native share (which includes IG) or fallback to copy
     if (navigator.share) {
       try {
         await navigator.share({
           title: 'FLAMES Result',
-          text: `${name1} + ${name2} = ${calculation.fullMeaning} ♥\nCalculate your FLAMES!`,
-          url: window.location.href,
+          text: shareText,
+          url: shareUrl,
         });
       } catch (err) {
         console.error('Share failed', err);
       }
     } else {
-      navigator.clipboard.writeText(`${name1} + ${name2} = ${calculation.fullMeaning} ♥`);
-      alert('Copied to clipboard!');
+      navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+      alert('Result copied! Paste it in an Instagram DM or Story!');
     }
   };
 
@@ -82,10 +90,27 @@ export const ResultCard: React.FC<ResultCardProps> = ({ name1, name2, calculatio
             FLAMES is a nostalgic game — not a real compatibility test.
           </p>
           
+          <div className={styles.socialShare}>
+            <p className={styles.shareText}>SHARE WITH FRIENDS</p>
+            <div className={styles.socialButtonsRow}>
+              <button 
+                className={styles.socialBtn} 
+                style={{ backgroundColor: '#25D366' }} 
+                onClick={handleWhatsApp}
+              >
+                WhatsApp
+              </button>
+              <button 
+                className={styles.socialBtn} 
+                style={{ background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)' }} 
+                onClick={handleInstagram}
+              >
+                Instagram
+              </button>
+            </div>
+          </div>
+          
           <div className={styles.actions}>
-            <button className={styles.btnPrimary} onClick={handleShare}>
-              ♥ SHARE RESULT
-            </button>
             <button className={styles.btnSecondary} onClick={onClose}>
               TRY AGAIN
             </button>

@@ -129,6 +129,45 @@
   font-style: italic;
 }
 
+.socialShare {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.shareText {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.socialButtonsRow {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.socialBtn {
+  color: var(--color-white);
+  border: 3px solid var(--color-border);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--color-border);
+  transition: transform 0.1s;
+  flex: 1;
+  max-width: 140px;
+}
+
+.socialBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--color-border);
+}
+
 .actions {
   display: flex;
   gap: 16px;
