@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="./public/flames.png" width="800" alt="FLAMES">
+</p>
 # ♥ FLAMES.EXE
 
 ### The classic FLAMES game, rebuilt for the internet.
