@@ -34,6 +34,12 @@
   align-items: center;
   gap: 16px;
   letter-spacing: 2px;
+  animation: textGlow 3s infinite alternate;
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 2px 2px 0px var(--color-border), 0 0 0px transparent; }
+  100% { text-shadow: 2px 2px 0px var(--color-border), 0 0 12px var(--color-secondary); }
 }
 
 .heart {
@@ -131,6 +137,12 @@
   mix-blend-mode: multiply;
   mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
   -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+  animation: deskFloat 6s ease-in-out infinite;
+}
+
+@keyframes deskFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .deskImage {
