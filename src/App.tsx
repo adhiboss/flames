@@ -7,6 +7,7 @@ import { WhitespaceDecorations } from './components/WhitespaceDecorations/Whites
 import { ResultCard } from './components/ResultCard/ResultCard';
 import { HistoryView } from './components/HistoryView/HistoryView';
 import { StatsView } from './components/StatsView/StatsView';
+import { DevTestPanel } from './components/DevTestPanel/DevTestPanel';
 import { calculateFlames } from './utils/flamesLogic';
 import type { FlamesCalculation, FlamesResultType } from './utils/flamesLogic';
 import { logCalculation } from './utils/analytics';
@@ -185,6 +186,7 @@ export const App: React.FC = () => {
       finalResult={calculationState.status === 'done' ? calculationState.calculation?.result || null : null}
     >
       {renderContent()}
+      <DevTestPanel />
     </Layout>
   );
 };

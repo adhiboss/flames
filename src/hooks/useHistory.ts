@@ -36,22 +36,6 @@ export const useHistory = () => {
       localStorage.setItem('flames_history', JSON.stringify(updated));
       return updated;
     });
-
-    // Also save to JSON file via our dev server API
-    // PRIVACY: Only send anonymous metadata, do not send user names.
-    const anonymousStat = {
-      id: newRecord.id,
-      result: newRecord.result,
-      timestamp: newRecord.timestamp
-    };
-
-    fetch('/api/save-entry', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(anonymousStat)
-    }).catch(err => console.error('Failed to save to JSON', err));
   };
 
   const clearHistory = () => {

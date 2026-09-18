@@ -1,0 +1,85 @@
+.toggleButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #333;
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  cursor: url('/cursor.png'), pointer;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+  transition: transform 0.1s;
+}
+
+.toggleButton:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.panelWindow {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 300px;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+}
+
+.panelContent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.warning {
+  font-family: var(--font-text);
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.buttonGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.injectBtn {
+  background-color: white;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  padding: 8px;
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 11px;
+  cursor: url('/cursor.png'), pointer;
+  transition: background-color 0.2s;
+}
+
+.injectBtn:hover {
+  background-color: var(--color-bg);
+}
+
+.successMsg {
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 800;
+  color: #4CAF50;
+  text-align: center;
+  animation: fadeInOut 2s forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(5px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
