@@ -195,6 +195,12 @@ h1, h2, h3, h4, h5, h6 {
   transition: background-color 0.2s, transform 0.2s;
 }
 
+.retro-input::placeholder {
+  font-family: var(--font-cursive);
+  font-size: 14px;
+  opacity: 0.5;
+}
+
 .retro-input:focus {
   background-color: #fff9fc;
   border-color: var(--color-secondary);

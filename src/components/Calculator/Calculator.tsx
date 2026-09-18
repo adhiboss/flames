@@ -45,15 +45,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ onCalculate, isCalculati
         
         <div className={styles.heroSubtitle}>ENTER TWO NAMES. LET FATE DECIDE.</div>
 
-        <div className={styles.swapContainer}>
-          <button 
-            className={styles.swapButton} 
-            onClick={() => setIsSwapped(!isSwapped)}
-            title="Swap avatars"
-          >
-            🔄 Swap Avatars
-          </button>
-        </div>
+
 
         <div className={styles.inputsContainer}>
           <div className={`retro-input-wrapper ${styles.inputBox}`}>
@@ -80,7 +72,16 @@ export const Calculator: React.FC<CalculatorProps> = ({ onCalculate, isCalculati
 
           <div className={styles.connection}>
             <div className={styles.dotLine}></div>
-            <span className={`${styles.connectionHeart} ${name1.trim() && name2.trim() ? styles.filled : ''}`} role="img" aria-label="heart">♥</span>
+            <div className={styles.connectionCenter}>
+              <button 
+                className={styles.swapButtonCenter} 
+                onClick={() => setIsSwapped(!isSwapped)}
+                title="Swap avatars"
+              >
+                🔄
+              </button>
+              <span className={`${styles.connectionHeart} ${name1.trim() && name2.trim() ? styles.filled : ''}`} role="img" aria-label="heart">♥</span>
+            </div>
             <div className={styles.dotLine}></div>
           </div>
 
