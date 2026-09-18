@@ -32,11 +32,17 @@
   padding: 0;
 }
 
+a, button, [role="button"], .cursor-pointer {
+  cursor: url('/cursor.png'), pointer;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-text);
   overflow-x: hidden;
+  overflow-wrap: break-word;
+  cursor: url('/cursor.png'), auto;
   /* subtle pixel grid background pattern */
   background-image: 
     linear-gradient(var(--color-primary) 1px, transparent 1px),
@@ -108,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--color-border);
   background-color: var(--color-white);
   border-radius: 2px;
-  cursor: pointer;
+  cursor: url('/cursor.png'), pointer;
 }
 
 .retro-window-controls span:nth-child(1) { background-color: var(--color-white); }
@@ -130,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 16px 32px;
   font-family: var(--font-pixel);
   font-size: 14px;
-  cursor: pointer;
+  cursor: url('/cursor.png'), pointer;
   box-shadow: 4px 4px 0px rgba(45, 39, 74, 0.2);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   text-transform: uppercase;

@@ -50,7 +50,7 @@
   color: var(--color-white);
   font-family: var(--font-pixel);
   font-size: 16px;
-  cursor: pointer;
+  cursor: url('/cursor.png'), pointer;
   text-shadow: 2px 2px 0px var(--color-border);
 }
 
@@ -156,7 +156,7 @@
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 14px;
-  cursor: pointer;
+  cursor: url('/cursor.png'), pointer;
   box-shadow: 2px 2px 0px var(--color-border);
   transition: transform 0.1s;
   flex: 1;
@@ -184,7 +184,7 @@
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 16px;
-  cursor: pointer;
+  cursor: url('/cursor.png'), pointer;
   box-shadow: 3px 3px 0px var(--color-border);
   transition: transform 0.1s;
 }
@@ -203,7 +203,7 @@
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 16px;
-  cursor: pointer;
+  cursor: url('/cursor.png'), pointer;
   box-shadow: 3px 3px 0px var(--color-border);
   transition: transform 0.1s;
 }

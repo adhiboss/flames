@@ -185,3 +185,23 @@
     transform: scale(1.5);
   }
 }
+
+@media (max-width: 430px) {
+  .creatorSection {
+    width: 100%;
+    margin-top: 60px;
+  }
+  .buttonGroup {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .socialButton {
+    width: 100%;
+    max-width: 240px;
+  }
+  .imageContainer {
+    width: 100%;
+    height: 160px;
+  }
+}

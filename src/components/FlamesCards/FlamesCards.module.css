@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), filter var(--transition-fast);
-  cursor: default;
+  cursor: url('/cursor.png'), auto;
 }
 
 .flamesCard:not(.subdued):hover {
@@ -120,5 +120,15 @@
   }
   .label {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .flamesCard {
+    width: clamp(70px, 25vw, 80px);
+    height: clamp(70px, 25vw, 80px);
+  }
+  .cardsContainer {
+    gap: 12px;
   }
 }

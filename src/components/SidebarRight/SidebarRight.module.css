@@ -192,3 +192,12 @@
     padding: 16px;
   }
 }
+
+@media (max-width: 430px) {
+  .sidebar {
+    padding: 16px 8px;
+  }
+  .quoteText {
+    font-size: 12px;
+  }
+}
