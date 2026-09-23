@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import { getDb, logEvent, getAggregateStats } from './db';
+import { getDb, logEvent, getAggregateStats, logReview } from './db';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -64,6 +67,43 @@ app.get('/api/stats', async (req, res) => {
     res.json(data);
   } catch (error) {
     console.error('Error fetching stats:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// 3. POST /api/reviews
+app.post('/api/reviews', async (req, res) => {
+  try {
+    const { rating, nostalgic, likedUI, note } = req.body;
+    
+    // Validate
+    if (typeof rating !== 'number' || rating < 1 || rating > 5) {
+      return res.status(400).json({ error: 'Invalid rating' });
+    }
+
+    await logReview(rating, nostalgic, likedUI, note);
+
+    // Send email via Resend
+    if (process.env.RESEND_API_KEY) {
+      await resend.emails.send({
+        from: 'Flames App <onboarding@resend.dev>',
+        to: process.env.REVIEW_EMAIL_TO || 'adithyagowdaadhi9@gmail.com',
+        subject: 'New Review for Flames App',
+        html: `
+          <h2>New Review Received!</h2>
+          <p><strong>Rating:</strong> ${rating} / 5</p>
+          <p><strong>Nostalgic:</strong> ${nostalgic === true ? 'Yes' : nostalgic === false ? 'No' : 'N/A'}</p>
+          <p><strong>Liked UI:</strong> ${likedUI === true ? 'Yes' : likedUI === false ? 'No' : 'N/A'}</p>
+          <p><strong>Note:</strong> ${note || 'None'}</p>
+        `
+      });
+    } else {
+      console.warn('RESEND_API_KEY not set. Email not sent.');
+    }
+
+    res.status(201).json({ success: true });
+  } catch (error) {
+    console.error('Error handling review:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

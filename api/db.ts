@@ -40,6 +40,17 @@ export async function getDb() {
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `;
+
+  await sql`
+    CREATE TABLE IF NOT EXISTS reviews (
+      id SERIAL PRIMARY KEY,
+      rating INTEGER NOT NULL,
+      nostalgic BOOLEAN,
+      liked_ui BOOLEAN,
+      note TEXT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
   
   // Vercel Postgres doesn't need explicit indexes for small tables, but we can add them if missing.
   // We'll skip index creation here to avoid duplicate errors on serverless spin-ups.
@@ -101,5 +112,21 @@ export async function logEvent(
     INSERT INTO events (id, event_type, result, anonymous_session_id, ip_address)
     VALUES (${id}, ${eventType}, ${result}, ${sessionId}, ${ipAddress})
     ON CONFLICT (id) DO NOTHING
+  `;
+}
+
+// Log a review
+export async function logReview(
+  rating: number,
+  nostalgic: boolean | null,
+  likedUI: boolean | null,
+  note: string
+) {
+  const sql = getSql();
+  if (!sql) return;
+
+  await sql`
+    INSERT INTO reviews (rating, nostalgic, liked_ui, note)
+    VALUES (${rating}, ${nostalgic}, ${likedUI}, ${note})
   `;
 }

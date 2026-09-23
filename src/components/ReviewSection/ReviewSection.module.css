@@ -1,0 +1,145 @@
+.container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 32px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  color: var(--color-primary);
+  font-family: var(--font-pixel);
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stars {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.starBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.starBtn:hover {
+  transform: scale(1.1);
+}
+
+.starIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.activeStar {
+  color: #fbbf24;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.toggleBtn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-pixel);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+}
+
+.toggleBtn:hover {
+  background: var(--bg-hover);
+}
+
+.activeYes {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.activeNo {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: white;
+}
+
+.textarea {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text-primary);
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.submitBtn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.successMessage {
+  text-align: center;
+  color: var(--color-primary);
+  font-family: var(--font-pixel);
+  font-size: 1.2rem;
+  padding: 24px;
+}
