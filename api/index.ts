@@ -81,12 +81,15 @@ app.post('/api/reviews', async (req, res) => {
       return res.status(400).json({ error: 'Invalid rating' });
     }
 
+    // Ensure DB table exists
+    await getDb();
+
     await logReview(rating, nostalgic, likedUI, note);
 
     // Send email via Resend
     if (process.env.RESEND_API_KEY) {
       await resend.emails.send({
-        from: 'Flames App <onboarding@resend.dev>',
+        from: 'onboarding@resend.dev',
         to: process.env.REVIEW_EMAIL_TO || 'adithyagowdaadhi9@gmail.com',
         subject: 'New Review for Flames App',
         html: `
